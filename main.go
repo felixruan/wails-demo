@@ -31,11 +31,11 @@ const appName = "Tiny RDM"
 func main() {
 	// Create an instance of the app structure
 	sysSvc := services.System()
-	connSvc := services.Connection()
-	browserSvc := services.Browser()
-	cliSvc := services.Cli()
-	monitorSvc := services.Monitor()
-	pubsubSvc := services.Pubsub()
+	//connSvc := services.Connection()
+	//browserSvc := services.Browser()
+	//cliSvc := services.Cli()
+	//monitorSvc := services.Monitor()
+	//pubsubSvc := services.Pubsub()
 	prefSvc := services.Preferences()
 	prefSvc.SetAppVersion(version)
 	prefSvc.UpdateEnv()
@@ -72,11 +72,11 @@ func main() {
 		StartHidden:      true,
 		OnStartup: func(ctx context.Context) {
 			sysSvc.Start(ctx, version)
-			connSvc.Start(ctx)
-			browserSvc.Start(ctx)
-			cliSvc.Start(ctx)
-			monitorSvc.Start(ctx)
-			pubsubSvc.Start(ctx)
+			//connSvc.Start(ctx)
+			//browserSvc.Start(ctx)
+			//cliSvc.Start(ctx)
+			//monitorSvc.Start(ctx)
+			//pubsubSvc.Start(ctx)
 
 			services.GA().SetSecretKey(gaMeasurementID, gaSecretKey)
 			services.GA().Startup(version)
@@ -92,18 +92,18 @@ func main() {
 			return false
 		},
 		OnShutdown: func(ctx context.Context) {
-			browserSvc.Stop()
-			cliSvc.CloseAll()
-			monitorSvc.StopAll()
-			pubsubSvc.StopAll()
+			//browserSvc.Stop()
+			//cliSvc.CloseAll()
+			//monitorSvc.StopAll()
+			//pubsubSvc.StopAll()
 		},
 		Bind: []interface{}{
 			sysSvc,
-			connSvc,
-			browserSvc,
-			cliSvc,
-			monitorSvc,
-			pubsubSvc,
+			//connSvc,
+			//browserSvc,
+			//cliSvc,
+			//monitorSvc,
+			//pubsubSvc,
 			prefSvc,
 		},
 		Mac: &mac.Options{
