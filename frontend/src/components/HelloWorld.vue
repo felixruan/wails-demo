@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import {reactive} from 'vue'
 
 const data = reactive({
