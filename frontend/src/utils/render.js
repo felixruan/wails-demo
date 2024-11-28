@@ -1,5 +1,6 @@
 import { h } from 'vue'
-import { NIcon } from 'naive-ui'
+// import { NIcon } from 'naive-ui'
+import { ElIcon as NIcon } from 'element-plus/es'
 
 export function useRender() {
     return {
