@@ -4,4 +4,6 @@ frontend/dist
 frontend/wailsjs
 frontend/package.json.md5
 frontend/package-lock.json
+frontend/auto-imports.d.ts
+frontend/components.d.ts
 .idea
