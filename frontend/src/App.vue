@@ -15,15 +15,15 @@ import { useI18n } from 'vue-i18n'
 // import { darkTheme, NButton, NSpace } from 'naive-ui'
 import { ElButton as NButton, ElSpace as NSpace } from 'element-plus/es'
 // import KeyFilterDialog from './components/dialogs/KeyFilterDialog.vue'
-import { Environment, WindowSetDarkTheme, WindowSetLightTheme } from 'wailsjs/runtime/runtime.js'
-import { darkThemeOverrides, themeOverrides } from '@/utils/theme.js'
+import { WindowSetDarkTheme, WindowSetLightTheme } from 'wailsjs/runtime/runtime.js'
+// import { darkThemeOverrides, themeOverrides } from '@/utils/theme.js'
 import AboutDialog from '@/components/dialogs/AboutDialog.vue'
 // import FlushDbDialog from '@/components/dialogs/FlushDbDialog.vue'
 // import ExportKeyDialog from '@/components/dialogs/ExportKeyDialog.vue'
 // import ImportKeyDialog from '@/components/dialogs/ImportKeyDialog.vue'
 import { Info } from 'wailsjs/go/services/systemService.js'
 // import DecoderDialog from '@/components/dialogs/DecoderDialog.vue'
-import { loadModule, trackEvent } from '@/utils/analytics.js'
+// import { loadModule, trackEvent } from '@/utils/analytics.js'
 
 const prefStore = usePreferencesStore()
 // const connectionStore = useConnectionStore()
@@ -38,12 +38,12 @@ onMounted(async () => {
         if (prefStore.autoCheckUpdate) {
             prefStore.checkForUpdate()
         }
-        const env = await Environment()
-        loadModule(env.buildType !== 'dev' && prefStore.general.allowTrack !== false).then(() => {
-            Info().then(({ data }) => {
-                trackEvent('startup', data, true)
-            })
-        })
+        // const env = await Environment()
+        // loadModule(env.buildType !== 'dev' && prefStore.general.allowTrack !== false).then(() => {
+        //     Info().then(({ data }) => {
+        //         trackEvent('startup', data, true)
+        //     })
+        // })
 
         // show greetings and user behavior tracking statements
         if (!!!prefStore.behavior.welcomed) {
@@ -112,11 +112,7 @@ watch(
 </script>
 
 <template>
-    <el-config-provider
-        :locale="prefStore.themeLocale"
-        :theme="prefStore.isDark"
-        :theme-overrides="prefStore.isDark ? darkThemeOverrides : themeOverrides"
-        class="fill-height">
+    <el-config-provider :locale="prefStore.themeLocale" class="fill-height">
         <div>
             <app-content :loading="initializing" />
 

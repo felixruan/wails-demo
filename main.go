@@ -24,7 +24,8 @@ var assets embed.FS
 var icon []byte
 
 var version = "0.0.0"
-var gaMeasurementID, gaSecretKey string
+
+//var gaMeasurementID, gaSecretKey string
 
 const appName = "Demo"
 
@@ -78,8 +79,8 @@ func main() {
 			//monitorSvc.Start(ctx)
 			//pubsubSvc.Start(ctx)
 
-			services.GA().SetSecretKey(gaMeasurementID, gaSecretKey)
-			services.GA().Startup(version)
+			//services.GA().SetSecretKey(gaMeasurementID, gaSecretKey)
+			//services.GA().Startup(version)
 		},
 		OnDomReady: func(ctx context.Context) {
 			x, y := prefSvc.GetWindowPosition(ctx)

@@ -1,20 +1,21 @@
 <script setup>
 import { computed, h, ref, watchEffect } from 'vue'
-import { useI18n } from 'vue-i18n'
+// import { useI18n } from 'vue-i18n'
 import useDialog from 'stores/dialog'
 import usePreferencesStore from 'stores/preferences.js'
-import { find, map, sortBy } from 'lodash'
+// import { find, map, sortBy } from 'lodash'
+import { map, sortBy } from 'lodash'
 import { typesIconStyle } from '@/consts/support_redis_type.js'
 import Help from '@/components/icons/Help.vue'
-import Delete from '@/components/icons/Delete.vue'
-import IconButton from '@/components/common/IconButton.vue'
+// import Delete from '@/components/icons/Delete.vue'
+// import IconButton from '@/components/common/IconButton.vue'
 // import { NButton, NEllipsis, NIcon, NSpace, NTooltip } from 'naive-ui'
-import { ElButton as NButton, ElText as NEllipsis } from 'element-plus/es'
-import { ElIcon as NIcon, ElSpace as NSpace, ElTooltip as NTooltip } from 'element-plus/es'
-import Edit from '@/components/icons/Edit.vue'
-import { joinCommand } from '@/utils/decoder_cmd.js'
-import AddLink from '@/components/icons/AddLink.vue'
-import Checked from '@/components/icons/Checked.vue'
+// import { ElButton as NButton, ElText as NEllipsis } from 'element-plus/es'
+// import { ElIcon as NIcon, ElSpace as NSpace, ElTooltip as NTooltip } from 'element-plus/es'
+// import Edit from '@/components/icons/Edit.vue'
+// import { joinCommand } from '@/utils/decoder_cmd.js'
+// import AddLink from '@/components/icons/AddLink.vue'
+// import Checked from '@/components/icons/Checked.vue'
 import { BrowserOpenURL } from 'wailsjs/runtime/runtime.js'
 
 const prefStore = usePreferencesStore()
@@ -22,7 +23,7 @@ const prefStore = usePreferencesStore()
 const prevPreferences = ref({})
 const tab = ref('general')
 const dialogStore = useDialog()
-const i18n = useI18n()
+// const i18n = useI18n()
 const loading = ref(false)
 
 const initPreferences = async () => {

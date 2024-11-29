@@ -18,7 +18,7 @@ import { useRender } from '@/utils/render.js'
 // import bilibiliUrl from '@/assets/images/bilibili_official.png'
 // import QRCode from '@/components/icons/QRCode.vue'
 // import Twitter from '@/components/icons/Twitter.vue'
-import { trackEvent } from '@/utils/analytics.js'
+// import { trackEvent } from '@/utils/analytics.js'
 
 // const themeVars = useThemeVars()
 const themeVars = computed(() => {
@@ -126,17 +126,17 @@ const onSelectPreferenceMenu = (key) => {
 }
 
 const openWechatOfficial = () => {
-    trackEvent('open', { target: 'wechat_official' })
+    // trackEvent('open', { target: 'wechat_official' })
     showWechat.value = true
 }
 
 const openX = () => {
-    trackEvent('open', { target: 'x' })
+    // trackEvent('open', { target: 'x' })
     BrowserOpenURL('https://twitter.com/LykinHuang')
 }
 
 const openGithub = () => {
-    trackEvent('open', { target: 'github' })
+    // trackEvent('open', { target: 'github' })
     BrowserOpenURL('https://github.com/tiny-craft/tiny-rdm')
 }
 

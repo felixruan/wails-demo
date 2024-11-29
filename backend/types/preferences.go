@@ -3,11 +3,10 @@ package types
 import "tinyrdm/backend/consts"
 
 type Preferences struct {
-	Behavior PreferencesBehavior  `json:"behavior" yaml:"behavior"`
-	General  PreferencesGeneral   `json:"general" yaml:"general"`
-	Editor   PreferencesEditor    `json:"editor" yaml:"editor"`
-	Cli      PreferencesCli       `json:"cli" yaml:"cli"`
-	Decoder  []PreferencesDecoder `json:"decoder" yaml:"decoder,omitempty"`
+	Behavior PreferencesBehavior `json:"behavior" yaml:"behavior"`
+	General  PreferencesGeneral  `json:"general" yaml:"general"`
+	Editor   PreferencesEditor   `json:"editor" yaml:"editor"`
+	Cli      PreferencesCli      `json:"cli" yaml:"cli"`
 }
 
 func NewPreferences() Preferences {
@@ -38,7 +37,6 @@ func NewPreferences() Preferences {
 			FontSize:    consts.DEFAULT_FONT_SIZE,
 			CursorStyle: "block",
 		},
-		Decoder: []PreferencesDecoder{},
 	}
 }
 
@@ -82,14 +80,4 @@ type PreferencesCli struct {
 	FontFamily  []string `json:"fontFamily" yaml:"font_family,omitempty"`
 	FontSize    int      `json:"fontSize" yaml:"font_size"`
 	CursorStyle string   `json:"cursorStyle" yaml:"cursor_style,omitempty"`
-}
-
-type PreferencesDecoder struct {
-	Name       string   `json:"name" yaml:"name"`
-	Enable     bool     `json:"enable" yaml:"enable"`
-	Auto       bool     `json:"auto" yaml:"auto"`
-	DecodePath string   `json:"decodePath" yaml:"decode_path"`
-	DecodeArgs []string `json:"decodeArgs" yaml:"decode_args,omitempty"`
-	EncodePath string   `json:"encodePath" yaml:"encode_path"`
-	EncodeArgs []string `json:"encodeArgs" yaml:"encode_args,omitempty"`
 }
