@@ -89,12 +89,9 @@ const preferencesOptions = computed(() => {
             key: 'update',
         },
         {
-            type: 'divider',
-            key: 'd1',
-        },
-        {
             label: 'menu.about',
             key: 'about',
+            // divided: true,
         },
     ]
 })
@@ -187,8 +184,9 @@ const exThemeVars = computed(() => {
                             v-for="(item, index) in preferencesOptions"
                             :command="item.key"
                             :key="index"
+                            :divided="item.divided"
                         >
-                            <el-icon><component :is="render.renderIcon(item.icon)" /></el-icon>
+                            <el-icon><component v-if="item.icon" :is="render.renderIcon(item.icon)" /></el-icon>
                             <component :is="render.renderLabel($t(item.label), { class: 'context-menu-item' })" />
                         </el-dropdown-item>
                     </el-dropdown-menu>

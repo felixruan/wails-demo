@@ -2,6 +2,7 @@ import { createPinia } from 'pinia'
 import { createApp, nextTick } from 'vue'
 import App from './App.vue'
 import './styles/style.scss'
+import 'element-plus/dist/index.css'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -11,6 +12,7 @@ import usePreferencesStore from 'stores/preferences.js'
 import { loadEnvironment } from '@/utils/platform.js'
 import { setupMonaco } from '@/utils/monaco.js'
 import { setupChart } from '@/utils/chart.js'
+import ElementPlus from 'element-plus'
 
 dayjs.extend(duration)
 dayjs.extend(relativeTime)
@@ -19,6 +21,8 @@ async function setupApp() {
     const app = createApp(App)
     app.use(i18n)
     app.use(createPinia())
+    // 初始化组件库
+    app.use(ElementPlus)
 
     await loadEnvironment()
     setupMonaco()

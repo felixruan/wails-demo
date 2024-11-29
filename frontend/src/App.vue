@@ -33,7 +33,7 @@ onMounted(async () => {
     try {
         initializing.value = true
         await prefStore.loadFontList()
-        await prefStore.loadBuildInDecoder()
+        // await prefStore.loadBuildInDecoder()
         // await connectionStore.initConnections()
         if (prefStore.autoCheckUpdate) {
             prefStore.checkForUpdate()
@@ -48,13 +48,14 @@ onMounted(async () => {
         // show greetings and user behavior tracking statements
         if (!!!prefStore.behavior.welcomed) {
             const n = $notification.show({
-                title: () => i18n.t('dialogue.welcome.title'),
-                content: () => i18n.t('dialogue.welcome.content'),
+                title: i18n.t('dialogue.welcome.title'),
+                content: i18n.t('dialogue.welcome.content'),
                 // duration: 5000,
                 keepAliveOnHover: true,
                 closable: false,
                 meta: ' ',
-                action: () =>
+                action: h('div', {}, [
+                    h('div', {}, i18n.t('dialogue.welcome.content')),
                     h(
                         NSpace,
                         {},
@@ -67,7 +68,7 @@ onMounted(async () => {
                                         type: 'tertiary',
                                         onClick: () => {
                                             prefStore.setAsWelcomed(false)
-                                            n.destroy()
+                                            n.close()
                                         },
                                     },
                                     {
@@ -81,7 +82,7 @@ onMounted(async () => {
                                         type: 'primary',
                                         onClick: () => {
                                             prefStore.setAsWelcomed(true)
-                                            n.destroy()
+                                            n.close()
                                         },
                                     },
                                     {
@@ -91,6 +92,7 @@ onMounted(async () => {
                             ],
                         },
                     ),
+                ])
             })
         }
     } finally {
@@ -112,10 +114,9 @@ watch(
 </script>
 
 <template>
-    <el-config-provider :locale="prefStore.themeLocale" class="fill-height">
-        <div>
+    <el-config-provider :locale="prefStore.themeLocale">
+        <div class="fill-height">
             <app-content :loading="initializing" />
-
             <!-- top modal dialogs -->
             <!-- <connection-dialog /> -->
             <!-- <group-dialog /> -->

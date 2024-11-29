@@ -480,9 +480,10 @@ const usePreferencesStore = defineStore('preferences', {
                         const notiRef = $notification.show({
                             title: i18nGlobal.t('dialogue.upgrade.title'),
                             content: i18nGlobal.t('dialogue.upgrade.new_version_tip', { ver: latest }),
-                            action: () =>
-                                h('div', { class: 'flex-box-h flex-item-expand' }, [
-                                    h(NSpace, { wrapItem: false }, () => [
+                            action:
+                                h('div', {}, [
+                                    h('div', {}, i18nGlobal.t('dialogue.upgrade.new_version_tip', { ver: latest })),
+                                    h(NSpace, { class: 'flex-box-h flex-item-expand' }, () => [
                                         h(
                                             NButton,
                                             {
@@ -492,7 +493,7 @@ const usePreferencesStore = defineStore('preferences', {
                                                     // skip this update
                                                     this.general.skipVersion = latest
                                                     this.savePreferences()
-                                                    notiRef.destroy()
+                                                    notiRef.close()
                                                 },
                                             },
                                             () => i18nGlobal.t('dialogue.upgrade.skip'),
@@ -502,7 +503,9 @@ const usePreferencesStore = defineStore('preferences', {
                                             {
                                                 size: 'small',
                                                 secondary: true,
-                                                onClick: notiRef.destroy,
+                                                onClick: () => {
+                                                    notiRef.close()
+                                                },
                                             },
                                             () => i18nGlobal.t('dialogue.upgrade.later'),
                                         ),
@@ -530,7 +533,7 @@ const usePreferencesStore = defineStore('preferences', {
             } finally {
                 nextTick().then(() => {
                     if (msgRef != null) {
-                        msgRef.destroy()
+                        msgRef.close()
                         msgRef = null
                     }
                 })

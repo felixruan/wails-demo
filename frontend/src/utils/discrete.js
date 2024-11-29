@@ -2,26 +2,50 @@ import usePreferencesStore from 'stores/preferences.js'
 // import { createDiscreteApi, darkTheme } from 'naive-ui'
 // import { darkThemeOverrides, themeOverrides } from '@/utils/theme.js'
 import { i18nGlobal } from '@/utils/i18n.js'
+import { ElMessage, ElLoading, ElNotification, ElMessageBox } from 'element-plus'
 // import { computed } from 'vue'
 
 function setupMessage(message) {
     return {
         error: (content, option = null) => {
-            return message.error(content, option)
+            return ElMessage({
+                message: content,
+                type: 'error',
+                duration: option?.duration || 5000,
+                showClose: true,
+            })
         },
         info: (content, option = null) => {
-            return message.info(content, option)
+            return ElMessage({
+                message: content,
+                type: 'info',
+                duration: option?.duration || 5000,
+                showClose: true,
+            })
         },
         loading: (content, option = {}) => {
-            option.duration = option.duration != null ? option.duration : 30000
-            option.keepAliveOnHover = option.keepAliveOnHover !== undefined ? option.keepAliveOnHover : true
-            return message.loading(content, option)
+            return ElLoading.service({
+                lock: true,
+                content,
+                spinner: option?.spinner,
+                background: 'rgba(0, 0, 0, 0.7)',
+            })
         },
         success: (content, option = null) => {
-            return message.success(content, option)
+            return ElMessage({
+                message: content,
+                type: 'success',
+                duration: option?.duration || 5000,
+                showClose: true,
+            })
         },
         warning: (content, option = null) => {
-            return message.warning(content, option)
+            return ElMessage({
+                message: content,
+                type: 'warning',
+                duration: option?.duration || 5000,
+                showClose: true,
+            })
         },
     }
 }
@@ -33,26 +57,51 @@ function setupNotification(notification) {
          * @return {NotificationReactive}
          */
         show(option) {
-            return notification.create(option)
+            return ElNotification({
+                title: option.title,
+                message: option.action || option.content,
+                duration: 0,
+                position: 'bottom-right',
+            })
         },
         error: (content, option = {}) => {
             option.content = content
             option.title = option.title || i18nGlobal.t('common.error')
-            return notification.error(option)
+            return ElNotification({
+                title: option.title,
+                message: option.content,
+                type: 'error',
+                position: 'bottom-right',
+            })
         },
         info: (content, option = {}) => {
             option.content = content
-            return notification.info(option)
+            return ElNotification({
+                title: option.title,
+                message: option.content,
+                type: 'info',
+                position: 'bottom-right',
+            })
         },
         success: (content, option = {}) => {
             option.content = content
             option.title = option.title || i18nGlobal.t('common.success')
-            return notification.success(option)
+            return ElNotification({
+                title: option.title,
+                message: option.content,
+                type: 'success',
+                position: 'bottom-right',
+            })
         },
         warning: (content, option = {}) => {
             option.content = content
             option.title = option.title || i18nGlobal.t('common.warning')
-            return notification.warning(option)
+            return ElNotification({
+                title: option.title,
+                message: option.content,
+                type: 'warning',
+                position: 'bottom-right',
+            })
         },
     }
 }
@@ -71,22 +120,38 @@ function setupDialog(dialog) {
         show(option) {
             option.closable = option.closable === true
             option.autoFocus = option.autoFocus === true
-            option.transformOrigin = 'center'
-            return dialog.create(option)
+            return ElMessageBox.confirm(
+                content,
+                i18nGlobal.t('common.warning'),
+                {
+                    confirmButtonText: i18nGlobal.t('common.confirm'),
+                    cancelButtonText: i18nGlobal.t('common.cancel'),
+                    type: 'info',
+                    autofocus: option.autoFocus,
+                    showClose: option.closable,
+                }
+            )
+                .then(() => {
+                    onConfirm && onConfirm()
+                })
+                .catch(() => {})
         },
         warning: (content, onConfirm) => {
-            return dialog.warning({
-                title: i18nGlobal.t('common.warning'),
-                content: content,
-                closable: false,
-                autoFocus: false,
-                transformOrigin: 'center',
-                positiveText: i18nGlobal.t('common.confirm'),
-                negativeText: i18nGlobal.t('common.cancel'),
-                onPositiveClick: () => {
+            return ElMessageBox.confirm(
+                content,
+                i18nGlobal.t('common.warning'),
+                {
+                    confirmButtonText: i18nGlobal.t('common.confirm'),
+                    cancelButtonText: i18nGlobal.t('common.cancel'),
+                    type: 'warning',
+                    autofocus: false,
+                    showClose: false,
+                }
+            )
+                .then(() => {
                     onConfirm && onConfirm()
-                },
-            })
+                })
+                .catch(() => {})
         },
     }
 }

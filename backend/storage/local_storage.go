@@ -1,7 +1,6 @@
 package storage
 
 import (
-	"github.com/vrischmann/userdir"
 	"os"
 	"path"
 )
@@ -15,7 +14,7 @@ type localStorage struct {
 // NewLocalStore returns a localStore instance.
 func NewLocalStore(filename string) *localStorage {
 	return &localStorage{
-		ConfPath: path.Join(userdir.GetConfigHome(), "WailsDemo", filename),
+		ConfPath: path.Join("config", filename),
 	}
 }
 
