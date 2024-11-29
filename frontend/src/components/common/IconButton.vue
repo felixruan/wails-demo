@@ -80,7 +80,6 @@ const hasTooltip = computed(() => {
         :secondary="props.secondary"
         :size="props.small ? 'small' : ''"
         :style="props.buttonStyle"
-        :tertiary="props.tertiary"
         :text="!props.border"
         :type="props.type"
         @click.prevent="emit('click')">

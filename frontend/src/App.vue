@@ -65,7 +65,6 @@ onMounted(async () => {
                                     NButton,
                                     {
                                         secondary: true,
-                                        type: 'tertiary',
                                         onClick: () => {
                                             prefStore.setAsWelcomed(false)
                                             n.close()
@@ -109,7 +108,9 @@ watch(
 // watch language and dynamically switch
 watch(
     () => prefStore.general.language,
-    (lang) => (i18n.locale.value = prefStore.currentLanguage),
+    () => {
+        i18n.locale.value = prefStore.currentLanguage
+    },
 )
 </script>
 

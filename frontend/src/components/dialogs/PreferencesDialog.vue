@@ -106,7 +106,6 @@ const onClose = () => {
         close-on-press-escape
         style="width: 640px"
         align-center
-        @close="onClose"
     >
         <el-tabs v-model="tab" tab-position="left" tab-style="font-weight: 420" style="height: 100%">
             <!-- general pane -->
