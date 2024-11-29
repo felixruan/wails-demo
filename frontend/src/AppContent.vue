@@ -30,7 +30,7 @@ const props = defineProps({
 
 const data = reactive({
     navMenuWidth: 50,
-    toolbarHeight: 38,
+    toolbarHeight: 32,
 })
 
 const tabStore = useTabStore()
@@ -165,7 +165,7 @@ const onKeyShortcut = (e) => {
                         paddingLeft: `${logoPaddingLeft}px`,
                     }">
                     <el-space :size="3" :wrap="false" :wrap-item="false" align="center">
-                        <el-avatar :size="32" :src="iconUrl" color="#0000" style="min-width: 32px" />
+                        <el-avatar :size="20" :src="iconUrl" color="#0000" style="min-width: 20px" />
                         <div style="min-width: 68px; white-space: nowrap; font-size: 14px; font-weight: 500"> Demo (v1.0.0)</div>
 <!--                        <transition name="fade">-->
 <!--                            <n-text v-if="tabStore.nav === 'browser'" class="ellipsis" strong style="font-size: 13px">-->

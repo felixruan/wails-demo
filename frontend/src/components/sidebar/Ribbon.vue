@@ -3,14 +3,14 @@ import { computed, ref } from 'vue'
 // import { NIcon, useThemeVars } from 'naive-ui'
 import { useThemeVars } from '@/utils/theme_vars.js'
 import Database from '@/components/icons/Database.vue'
-import Server from '@/components/icons/Server.vue'
+// import Server from '@/components/icons/Server.vue'
 import IconButton from '@/components/common/IconButton.vue'
 import Config from '@/components/icons/Config.vue'
 import useDialogStore from 'stores/dialog.js'
 // import Github from '@/components/icons/Github.vue'
 import { BrowserOpenURL } from 'wailsjs/runtime/runtime.js'
 import usePreferencesStore from 'stores/preferences.js'
-import Record from '@/components/icons/Record.vue'
+// import Record from '@/components/icons/Record.vue'
 import { extraTheme } from '@/utils/extra_theme.js'
 // import useBrowserStore from 'stores/browser.js'
 import { useRender } from '@/utils/render.js'
@@ -59,7 +59,7 @@ const menuOptions = computed(() => {
         {
             label: 'ribbon.log',
             key: 'log',
-            icon: Record,
+            icon: Database,
         },
     ]
 })

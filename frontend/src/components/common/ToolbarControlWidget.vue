@@ -17,7 +17,7 @@ const themeVars = computed(() => {
 const props = defineProps({
     size: {
         type: Number,
-        default: 35,
+        default: 32,
     },
     maximised: {
         type: Boolean,
@@ -80,7 +80,7 @@ const handleClose = () => {
 
 <style lang="scss" scoped>
 .btn-wrapper {
-    width: v-bind('buttonSize');
+    width: 48px;
     height: v-bind('buttonSize');
     display: flex;
     flex-direction: column;
