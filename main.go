@@ -26,7 +26,7 @@ var icon []byte
 var version = "0.0.0"
 var gaMeasurementID, gaSecretKey string
 
-const appName = "Tiny RDM"
+const appName = "Demo"
 
 func main() {
 	// Create an instance of the app structure

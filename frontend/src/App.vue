@@ -113,7 +113,6 @@ watch(
 
 <template>
     <el-config-provider
-        :inline-theme-disabled="true"
         :locale="prefStore.themeLocale"
         :theme="prefStore.isDark"
         :theme-overrides="prefStore.isDark ? darkThemeOverrides : themeOverrides"

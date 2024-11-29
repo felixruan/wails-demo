@@ -113,7 +113,7 @@ const onClose = () => {
                 <el-form :disabled="loading" :model="prefStore.general" hide-required-asterisk label-position="top" inline>
                     <template #default>
                         <el-form-item :label="$t('preferences.general.theme')" style="width: 100%" required>
-                            <el-radio-group v-model="prefStore.general.theme" name="theme" size="medium">
+                            <el-radio-group v-model="prefStore.general.theme" name="theme" size="default">
                                 <el-radio-button
                                     v-for="opt in prefStore.themeOption"
                                     :key="opt.value"
@@ -298,7 +298,7 @@ const onClose = () => {
                             <el-input-number v-model="prefStore.cli.fontSize" :max="65535" :min="1" />
                         </el-form-item>
                         <el-form-item :label="$t('preferences.cli.cursor_style')" style="width: 100%">
-                            <el-radio-group v-model="prefStore.cli.cursorStyle" name="theme" size="medium">
+                            <el-radio-group v-model="prefStore.cli.cursorStyle" name="theme" size="default">
                                 <el-radio-button
                                     v-for="opt in prefStore.cliCursorStyleOption"
                                     :key="opt.value"

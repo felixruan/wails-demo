@@ -175,7 +175,12 @@ defineExpose({
             :loading="data.loading"
             class="flex-item-expand"
             flex-height
-            virtual-scroll />
+            virtual-scroll
+        >
+            <template #empty>
+                <el-empty />
+            </template>
+        </el-table>
     </div>
 </template>
 
